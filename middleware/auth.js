@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 export default function(req, res, next) {
   const token = req.headers.authorization && req.headers.authorization.match(/^Bearer (.*)$/)[1];
-  if (!token) return res.status(401).json({ message: "Auth Error" });
+  if (!token) return res.status(401).json({ message: "Unauthorized" });
 
   try {
     const decoded = jwt.verify(token, "randomString");
